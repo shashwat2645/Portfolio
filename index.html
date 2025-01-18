@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shashwat Singh - Portfolio</title>
+    <script src="https://smtpjs.com/v3/smtp.js">
+    </script>
+    <script src="https://kit.fontawesome.com/f0cea0d2c1.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles.css"></link>
+</head>
+<body>
+
+<header>
+    <h1>Shashwat Singh</h1>
+    <nav>
+        <div id="hamburger">&#9776;</div>
+        <ul id="nav-links">
+            <li><a href="#home" class="nav-link">Home</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#education" class="nav-link">Education</a></li>
+            <li><a href="#skills" class="nav-link">Skills</a></li>
+            <li><a href="#projects" class="nav-link">Projects</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section id="home">
+  <div class="home-left">
+      <div>
+          <h2>Hi, I'm <span id="diff"> Shashwat Singh</span></h2>
+          <p>A passionate tech enthusiast specializing in AI, Machine Learning, and Software Development.</p>
+          
+          <a href="https://drive.google.com/uc?export=download&id=173_5qwENUBl_8h14ski6D9klsr1TyYFG" download="Shashwat_Singh_CV.pdf">
+
+            <button class="download-btn pixel-corners">
+              <div class="button-content">
+                <div class="svg-container">
+                  <svg
+                  class="download-icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                  d="M19.479 10.092c-.212-3.951-3.473-7.092-7.479-7.092-4.005 0-7.267 3.141-7.479 7.092-2.57.463-4.521 2.706-4.521 5.408 0 3.037 2.463 5.5 5.5 5.5h13c3.037 0 5.5-2.463 5.5-5.5 0-2.702-1.951-4.945-4.521-5.408zm-7.479 6.908l-4-4h3v-4h2v4h3l-4 4z"
+                  ></path>
+                </svg>
+              </div>
+              <div class="text-container">
+                <div class="text">Download My CV</div>
+              </div>
+            </div>
+          </button>
+        </a>
+
+      </div>
+  </div>
+  <div class="home-right">
+      <div id="img"></div>
+  </div>
+</section>
+
+<section id="about" class="section">
+  <div class="about-left">
+    <div class="myimg"></div>
+  </div>
+  <div class="about-right">
+
+    <h2>About Me</h2>
+    <div class="ab">
+
+      <h3>Shashwat Singh - Student</h3>
+      <p>Hello! I'm Shashwat Singh, a passionate and driven BTech student currently specializing in Computer Science Engineering (CSE) with a focus on Artificial Intelligence and Machine Learning (AIML). I have a strong interest in the intersection of software and hardware, which has led me to explore robotics, IoT, and various hands-on projects that integrate AI with real-world applications.</p>
+      <p>My journey started with a curiosity for creating innovative solutions, and since then, I've been dedicated to learning and growing in both software development and hardware integration. Whether it's developing intelligent algorithms, building IoT devices, or designing hardware projects like humanoid robots, I enjoy pushing the boundaries of what's possible with technology.</p>
+      <p>In addition to my technical skills, I thrive in problem-solving and enjoy the process of bringing ideas to life, from concept to execution. My passion for creating and building things is complemented by my academic background and practical experience in various fields like data structures, machine learning, and robotics.</p>
+      <p>If you're looking for a dedicated, creative, and solution-oriented individual with a love for innovation and technology, I’d love to connect and collaborate.</p>
+    </div>
+  </div>
+
+</section>
+
+<section id="education" class="section">
+    <h2>Education</h2>
+    <div class="graduation edu-detail">
+      <h3>Bachelor of Technology in Computer Science Engineering (2023 - Present)</h3>
+      <h4><span class="head">Institute Name -</span> <a href="https://www.psit.ac.in/" target="_blank" class="links" id="psit"> Pranveer Singh Institute of Technology</a></h4>
+      <h4><span class="head">Location -</span> Kanpur, India</h4>
+      <p>Currently pursuing a Bachelor of Technology (BTech) in Computer Science Engineering with a specialization in Artificial Intelligence and Machine Learning. </p>
+      <p>Achieved 8.34 CGPA in my first year</p>
+    </div>
+    <div class="graduation edu-detail">
+      <h3>Higher Secondary Education (2023)</h3>
+      <h4><span class="head">School Name -</span> <a href="https://madhoganj.lpsc.co.in/" target="_blank" class="links" class="lps"> Lucknow Public Schools & Colleges - CBSE</a></h4>
+      <h4><span class="head">Location -</span> Hardoi, India</h4>
+      <p>Successfully completed my 12th standard with a focus on Science, achieving a remarkable score of 92.4%.</p>
+    </div>
+    <div class="graduation edu-detail">
+      <h3>Secondary Education (2021)</h3>
+      <h4><span class="head">School Name -</span> <a href="https://madhoganj.lpsc.co.in/" target="_blank" class="links" class="lps"> Lucknow Public Schools & Colleges - CBSE</a></h4>
+      <h4><span class="head">Location -</span> Hardoi, India</h4>
+      <p>Successfully completed my 10th standard with a focus on Science, achieving a remarkable score of 94.2%.</p>
+    </div>
+</section>
+
+<section class="container" id="skills">
+  <h2>Skills</h2>
+
+  <!-- Technical Skills Section -->
+  <section class="skills-section">
+    <h3>Technical Skills</h3>
+    <div class="skills-grid">
+      <div class="skill-box">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML Logo" class="skill-logo">
+        <p class="skill-name">HTML</p>
+      </div>
+      <div class="skill-box">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS Logo" class="skill-logo">
+        <p class="skill-name">CSS</p>
+      </div>
+      <div class="skill-box">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java Logo" class="skill-logo">
+        <p class="skill-name">Java</p>
+      </div>
+      <div class="skill-box">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python Logo" class="skill-logo">
+        <p class="skill-name">Python</p>
+      </div>
+      <div class="skill-box">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++ Logo" class="skill-logo">
+        <p class="skill-name">C/C++</p>
+      </div>
+      <div class="skill-box">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL Logo" class="skill-logo">
+        <p class="skill-name">MySQL</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Soft Skills Section -->
+  <section class="skills-section">
+    <h3>Soft Skills</h3>
+    <div class="skills-grid">
+      <div class="skill-box">
+        <img src="https://img.icons8.com/color/96/teamwork--v1.png" alt="Teamwork Logo" class="skill-logo">
+        <p class="skill-name">Teamwork</p>
+      </div>
+      <div class="skill-box">
+        <img src="https://img.icons8.com/color/96/communication--v1.png" alt="Communication Logo" class="skill-logo">
+        <p class="skill-name">Communication</p>
+      </div>
+      <div class="skill-box">
+        <img src="https://img.icons8.com/color/96/search.png" alt="Curiosity Icon" class="skill-logo">
+        <p class="skill-name">Curiosity & Learning</p>
+      </div>
+      <div class="skill-box">
+        <img src="https://i.ibb.co/mzJ092f/icons8-solution-100.png" alt="Problem-Solving Icon" class="skill-logo">
+        <p class="skill-name">Problem-Solving</p>
+      </div>
+      
+      <div class="skill-box">
+        <img src="https://img.icons8.com/color/96/idea.png" alt="Creativity Icon" class="skill-logo">
+        <p class="skill-name">Creativity</p>
+      </div>
+      <div class="skill-box">
+        <img src="https://img.icons8.com/color/96/gear.png" alt="Adaptability Icon" class="skill-logo">
+        <p class="skill-name">Adaptability</p>
+      </div>
+
+    </div>
+  </section>
+</section>
+
+<section class="container section" id="projects">
+  <h2>Projects</h2>
+    <section class="projects-section">
+      <div class="projects-grid">
+        <!-- Zeno Project -->
+        <div class="project-box">
+          <img src="https://i.ibb.co/hVHkR47/zeno.png" alt="Zeno Project Image" class="project-image">
+          <p class="project-title">Zeno</p>
+          <p class="project-description">Zeno is a versatile and user-friendly virtual assistant designed to simplify daily tasks and enhance productivity. It is created to make technology more accessible and practical for everyone, without relying on advanced AI or machine learning. The primary goal of Zeno is to streamline routine tasks such as setting reminders, managing schedules, controlling smart devices, and automating repetitive processes. Through simple voice commands and an intuitive interface, users can manage their day efficiently and seamlessly. </p>
+          <!-- <a href="#" class="project-link">View Project</a> -->
+        </div>
+
+        <!-- BloodSync Project -->
+        <div class="project-box">
+          <img src="https://i.ibb.co/zhL1rFw/bloodsync.jpg" alt="BloodSync Project Image" class="project-image">
+          <p class="project-title">BloodSync</p>
+          <p class="project-description">BloodSync is a cutting-edge platform designed to streamline the process of blood donation, distribution, and access for hospitals and individuals in need. The goal of BloodSync is to create a seamless, reliable, and efficient system that connects blood donors with recipients, ensuring that life-saving blood supplies are available where and when they are needed the most. This platform aims to bridge the gap between hospitals, blood banks, and donors by offering a centralized hub for blood donation requests, tracking, and distribution.</p>
+          <!-- <a href="#" class="project-link">View Project</a> -->
+        </div>
+      </div>
+    </section>
+</section>
+
+<section id="contact" class="section">
+    <h2>Leave a message</h2>
+    <form class="contact-form" action="https://api.web3forms.com/submit" method="post">
+      <input type="hidden" name="access_key" value="6ea11d8a-8574-49e3-aead-814fec33da6a">
+        <input type="text" placeholder="Your Name" required name="name">
+        <input type="email" placeholder="Your Email" required name="email">
+        <textarea placeholder="Your Message" rows="4" required name="message"></textarea>
+        <button type="submit">Send Message</button>
+    </form>
+</section>
+
+<footer>
+  <div class="footer-content">
+    <div class="footer-logo">
+      <p>© 2025 Shashwat Singh. All rights reserved.</p>
+    </div>
+
+    <div class="footer-links">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="social-media">
+      <a id="ln" href="https://www.linkedin.com/in/singhshashwat2645/" target="_blank" class="social-links">
+        <i class="fa-brands fa-linkedin"></i>
+      </a>
+      <a id="git" href="https://github.com/shashwat2645" target="_blank" class="social-links">
+        <i class="fa-brands fa-square-github"></i>
+      </a>
+      <a id="x" href="https://x.com/Shashwat0653073" target="_blank" class="social-links">
+        <i class="fa-brands fa-square-x-twitter"></i>
+      </a>
+      <a id="em" href="mailto:2k23csaiml2310582@gmail.com" target="_blank" class="social-links">
+        <i class="fa-solid fa-envelope"></i>
+      </a>
+    </div>    
+  </div>
+</footer>
+
+<script>
+  // Select the elements
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
+
+// Toggle the "active" class to show/hide the dropdown menu
+hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});
+
+// Close the dropdown if clicked outside of the menu
+document.addEventListener('click', (e) => {
+    if (!navLinks.contains(e.target) && e.target !== hamburger) {
+        navLinks.classList.remove('active');
+    }
+});
+    
+const form = document.getElementById('custom-form');
+
+  form.addEventListener('submit', function (event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    const formData = new FormData(form);
+
+    // Send the form data to the server
+    fetch(form.action, {
+      method: form.method,
+      body: formData,
+    })
+      .then((response) => {
+        if (response.ok) {
+          // Redirect to the "Thank You" page on success
+          window.location.href = 'thankyou.html';
+        } else {
+          alert('There was a problem submitting the form.');
+        }
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+        alert('There was an error. Please try again.');
+      });
+  });
+
+
+      
+</script>
+
+</body>
+</html>
