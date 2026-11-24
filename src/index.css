@@ -1,0 +1,202 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light Theme Design Tokens */
+    --bg: #F7F7FB;
+    --surface: #FFFFFF;
+    --surface2: #F0F0F8;
+    --border: #DCDDEE;
+    --line: #B9BCD6;
+    --text: #14152A;
+    --muted: #555A78;
+    --accent: #5B4BE0;
+    --accent2: #087E96;
+    --on-accent: #FFFFFF;
+    --ok: #0E8A5F;
+    --band: #14152A;
+    --band-accent: #A89CFF;
+    /* Hero name: always use a light color so it reads against any bg */
+    --hero-name: #14152A;
+  }
+
+  .dark {
+    /* Dark Theme Design Tokens */
+    --bg: #0A0B14;
+    --surface: #11131F;
+    --surface2: #181B2C;
+    --border: #262A42;
+    --line: #3A3F61;
+    --text: #ECEEF8;
+    --muted: #A2A8C4;
+    --accent: #8B7CFF;
+    --accent2: #38D0E8;
+    --on-accent: #0A0B14;
+    --ok: #3DDC97;
+    --band: #05060C;
+    --band-accent: #8B7CFF;
+    --hero-name: #ECEEF8;
+  }
+
+  html {
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* Smooth scroll offset for sticky navbar — all sections get it */
+  section[id] {
+    scroll-margin-top: 72px;
+  }
+
+  /* Visible focus rings for accessibility — WCAG AA */
+  *:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  /* Touch targets: interactive elements in nav and buttons should be ≥44px */
+  /* (applied via classes; not enforcing globally to avoid breaking inline links) */
+}
+
+@layer utilities {
+  /* Faint 56px grid — hero and closing card only */
+  .bg-grid-pattern {
+    background-size: 56px 56px;
+    background-image:
+      linear-gradient(to right, var(--line) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+    opacity: 0.12;
+  }
+
+  .dark .bg-grid-pattern {
+    opacity: 0.08;
+  }
+
+  /* 150ms card lift on hover */
+  .card-lift {
+    transition: transform 150ms ease, border-color 150ms ease, box-shadow 150ms ease;
+  }
+
+  .card-lift:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+    box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.12);
+  }
+
+  /* Outline text for front hero name (Layer 3) */
+  /* White stroke works in both themes — visible over photo and bg */
+  .text-stroke-outline {
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke-width: 1.5px;
+    -webkit-text-stroke-color: #FFFFFF;
+  }
+
+  /* Dark mode: slightly brighter */
+  .dark .text-stroke-outline {
+    -webkit-text-stroke-color: #ECEEF8;
+  }
+
+  /* Section reveal fade-up — applied by SectionWrapper via useScrollReveal */
+  .section-hidden {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  .section-visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  /* Gradient text shorthand */
+  .gradient-text {
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* No horizontal scroll protection */
+  .no-scroll-x {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+}
+
+/* ================================================================
+   Hero animation keyframes
+   ================================================================ */
+@keyframes heroLetterIn {
+  from { opacity: 0; transform: translateY(50px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes heroPhotoIn {
+  from { opacity: 0; transform: translateY(30px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes heroBlockIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-hero-letter {
+  animation: heroLetterIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+
+.animate-hero-photo {
+  animation: heroPhotoIn 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+  opacity: 0;
+}
+
+.animate-hero-block {
+  animation: heroBlockIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+  opacity: 0;
+}
+
+/* ================================================================
+   Respect prefers-reduced-motion — WCAG 2.1 AA compliance
+   ================================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .card-lift:hover {
+    transform: none !important;
+  }
+
+  .animate-hero-letter,
+  .animate-hero-photo,
+  .animate-hero-block {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+
+  .section-hidden {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
