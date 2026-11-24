@@ -35,23 +35,55 @@ export function Hero() {
         id="home"
         className="relative min-h-[100svh] min-h-[720px] w-full overflow-hidden flex flex-col justify-between bg-bg"
       >
-        {/* Faint grid */}
+        {/* Grid background */}
         <div className="pointer-events-none absolute inset-0 bg-grid-pattern z-0" aria-hidden="true" />
 
-        {/* Soft glow behind head */}
+        {/* Soft accent glow */}
         <div
           aria-hidden="true"
           className="pointer-events-none absolute top-[30%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-accent/25 blur-[130px] z-[1]"
         />
 
-        {/* ═══════════════════════════════════════════════════════════
-            LAYER 1 (z-10) — SOLID SHASHWAT, behind the photo
-            Outer letters show as bright solid white against dark bg.
-            Middle letters [3,4] are hidden by the photo above them.
-            ═══════════════════════════════════════════════════════════ */}
+        {/* ═══════════════════════════════════════════════════════════════
+            MOBILE PHOTO (< lg): full-width portrait crop, top of hero.
+            object-cover zooms into the person's face — no empty space.
+            ═══════════════════════════════════════════════════════════════ */}
+        {!photoError && (
+          <div
+            className="lg:hidden absolute inset-x-0 z-20 pointer-events-none"
+            style={{ top: '56px', height: '52vh' }}
+          >
+            <img
+              src={content.personal.profilePhotoPath}
+              alt="Shashwat, backend developer"
+              width="1024"
+              height="576"
+              fetchpriority="high"
+              loading="eager"
+              onError={() => setPhotoError(true)}
+              className={`w-full h-full object-cover animate-hero-photo ${
+                content.hero.photoGrayscale ? 'grayscale contrast-105' : ''
+              }`}
+              style={{ objectPosition: '58% 10%' }}
+            />
+            {/* Gradient so SHASHWAT name and text are readable */}
+            <div
+              aria-hidden="true"
+              className="absolute inset-x-0 bottom-0 h-28 pointer-events-none"
+              style={{ background: 'linear-gradient(to top, var(--bg) 20%, transparent 100%)' }}
+            />
+          </div>
+        )}
+
+        {/* ═══════════════════════════════════════════════════════════════
+            LAYER 1 — SHASHWAT solid, edge-to-edge
+            Desktop: z-10 (behind portrait photo)
+            Mobile:  z-30 (above the cover photo)
+            ═══════════════════════════════════════════════════════════════ */}
         <h1
           aria-label="Shashwat"
-          className="absolute left-0 right-0 z-10 w-full px-[2vw] flex justify-between select-none pointer-events-none font-serif font-black uppercase leading-none"
+          className="absolute left-0 right-0 w-full px-[2vw] flex justify-between select-none pointer-events-none font-serif font-black uppercase leading-none
+            z-30 lg:z-10"
           style={{
             top: '52%',
             transform: 'translateY(-50%)',
@@ -70,19 +102,18 @@ export function Hero() {
           ))}
         </h1>
 
-        {/* ═══════════════════════════════════════════════════════════
-            LAYER 2 (z-20) — Photo, centered, anchored to bottom
-            Drawn OVER the solid back name so the person's body
-            conceals the middle letters.
-            ═══════════════════════════════════════════════════════════ */}
+        {/* ═══════════════════════════════════════════════════════════════
+            LAYER 2 — Desktop portrait photo (hidden on mobile)
+            Centered, anchored to bottom, drawn OVER the solid back name.
+            ═══════════════════════════════════════════════════════════════ */}
         <div
-          className="absolute bottom-0 left-1/2 z-20 pointer-events-none flex justify-center items-end"
+          className="hidden lg:flex absolute bottom-0 left-1/2 z-20 pointer-events-none justify-center items-end"
           style={{
             transform: `translate(calc(-50% + ${mouseOffset.x}px), ${mouseOffset.y}px)`,
             transition: 'transform 160ms cubic-bezier(0.2,0,0.2,1)',
           }}
         >
-          {!photoError ? (
+          {!photoError && (
             <img
               src={content.personal.profilePhotoPath}
               alt="Shashwat, backend developer"
@@ -100,24 +131,16 @@ export function Hero() {
                 maxWidth: '72vw',
               }}
             />
-          ) : (
-            <div
-              className="animate-hero-photo"
-              style={{ height: 'clamp(500px,95vh,980px)', width: 'clamp(240px,40vw,560px)' }}
-            />
           )}
         </div>
 
-        {/* ═══════════════════════════════════════════════════════════
-            LAYER 3 (z-30) — Outline-only for letters [3,4]
-            Drawn OVER the photo. Only the letters whose index is in
-            heroOutlineLetters are visible (outline style). Others
-            are invisible — the solid z-10 layer shows through where
-            the photo doesn't cover.
-            ═══════════════════════════════════════════════════════════ */}
+        {/* ═══════════════════════════════════════════════════════════════
+            LAYER 3 — Outline overlay (only outlineLetters indexes)
+            Desktop only: on mobile all letters are solid over the photo.
+            ═══════════════════════════════════════════════════════════════ */}
         <div
           aria-hidden="true"
-          className="absolute left-0 right-0 z-30 w-full px-[2vw] flex justify-between select-none pointer-events-none font-serif font-black uppercase leading-none"
+          className="hidden lg:flex absolute left-0 right-0 z-30 w-full px-[2vw] justify-between select-none pointer-events-none font-serif font-black uppercase leading-none"
           style={{
             top: '52%',
             transform: 'translateY(-50%)',
@@ -138,9 +161,9 @@ export function Hero() {
           })}
         </div>
 
-        {/* ═══════════════════════════════════════════════════════════
-            LAYER 4 (z-40) — Text blocks
-            ═══════════════════════════════════════════════════════════ */}
+        {/* ═══════════════════════════════════════════════════════════════
+            LAYER 4 — Text blocks
+            ═══════════════════════════════════════════════════════════════ */}
 
         {/* Top-left chip */}
         <div className="relative z-40 mx-auto w-full max-w-[1200px] px-5 sm:px-10 pt-6 sm:pt-8 flex justify-between items-start pointer-events-none">
@@ -152,16 +175,20 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Bottom: tagline (left) + bio / buttons / socials (right) */}
-        <div className="relative z-40 mx-auto w-full max-w-[1200px] px-5 sm:px-10 pb-10 sm:pb-14 pointer-events-none">
-          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 pt-48 lg:pt-0">
+        {/* Bottom: tagline + bio / buttons / socials */}
+        <div className="relative z-40 mx-auto w-full max-w-[1200px] px-5 sm:px-10 pb-8 sm:pb-10 lg:pb-14 pointer-events-none">
+          {/*
+            Mobile:  flex-col stacked, pt pushes below the SHASHWAT name
+            Desktop: flex-row, items-end, justify-between, no top padding
+          */}
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 lg:gap-8 pt-[57vh] sm:pt-[60vh] lg:pt-0">
 
-            {/* Bottom-left tagline */}
+            {/* Tagline */}
             <div className="animate-hero-block pointer-events-auto max-w-xs">
               <h2
                 className="font-serif font-medium text-text leading-[1.15] tracking-tight"
                 style={{
-                  fontSize: 'clamp(28px, 3.6vw, 56px)',
+                  fontSize: 'clamp(26px, 3.6vw, 56px)',
                   textShadow: '0 2px 20px rgba(0,0,0,0.6)',
                 }}
               >
@@ -171,14 +198,17 @@ export function Hero() {
               </h2>
             </div>
 
-            {/* Bottom-right bio + pills + socials */}
-            <div className="animate-hero-block pointer-events-auto flex flex-col items-start lg:items-end space-y-4 max-w-sm">
+            {/* Bio + pills + socials */}
+            <div className="animate-hero-block pointer-events-auto flex flex-col items-start lg:items-end space-y-4 max-w-sm w-full lg:w-auto">
+              {/* Bio — hidden on mobile to reduce clutter */}
               <p
-                className="font-sans text-base leading-[1.6] text-text lg:text-right"
+                className="hidden lg:block font-sans text-base leading-[1.6] text-text lg:text-right"
                 style={{ textShadow: '0 1px 12px rgba(0,0,0,0.5)' }}
               >
                 {content.hero.bio}
               </p>
+
+              {/* Pills */}
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto">
                 <a
                   href={content.hero.buttons.resumeUrl}
@@ -197,6 +227,8 @@ export function Hero() {
                   <span>{content.hero.buttons.projects}</span>
                 </a>
               </div>
+
+              {/* Socials */}
               <div className="flex items-center gap-2.5 pt-1">
                 {content.socials.map((social) => (
                   <a
